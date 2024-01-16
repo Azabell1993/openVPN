@@ -125,7 +125,7 @@ if [[ ! -e /etc/openvpn/server/server.conf ]]; then
         # $ip이 사설 IP 주소이면 해당 서버는 프라이빗 네트워크에 위치하고 있어야 합니다.
         if echo "$ip" | grep -qE '^(10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|192\.168)'; then
                 echo
-                echo "이 서버는 NAT 뒤에 있습니다. 공용 IPv4 주소 또는 호스트 이름이 무엇인가요?"
+                echo "이 서버는 NAT를 통해 연결되어 있습니다. 공용 IPv4 주소 또는 호스트 이름이 무엇인가요?"
                 # 공용 IP 가져오기 및 grep로 정리
                 get_public_ip=$(grep -m 1 -oE '^[0-9]{1,3}(\.[0-9]{1,3}){3}$' <<< "$(wget -T 10 -t 1 -4qO- "http://ip1.dynupdate.no-ip.com/" || curl -m 10 -4Ls "http://ip1.dynupdate.no-ip.com/")")
                 read -p "공용 IPv4 주소 / 호스트 이름 [$get_public_ip]: " public_ip
