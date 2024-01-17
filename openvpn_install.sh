@@ -105,7 +105,8 @@ if [[ ! -e /etc/openvpn/server/server.conf ]]; then
                 apt-get install -y wget
         fi
         clear
-        echo '안녕하세요. OpenVPN .ovpn 발급 프로그램(roadwarrior)에 오신 것을 환영합니다!'
+	echo 'OpenVPN'
+        echo '안녕하세요. (roadwarrior) - .ovpn 발급 프로그램에 오신 것을 환영합니다!'
         # 시스템이 단일 IPv4를 가지고 있다면 자동으로 선택됩니다. 그렇지 않으면 사용자에게 물어봅니다.
         if [[ $(ip -4 addr | grep inet | grep -vEc '127(\.[0-9]{1,3}){3}') -eq 1 ]]; then
                 ip=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}')
